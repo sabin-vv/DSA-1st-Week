@@ -115,6 +115,24 @@ class List {
             return -1
         }
     }
+    reverse() {
+        if (this.size === 0) {
+            return null
+        } else {
+            let prev = null
+            let next = null
+
+        }
+    }
+    printReverse(node = this.head) {
+        if (!node)
+            return ''
+        let str = this.printReverse(node.next)
+
+      return str + `${node.value} `
+
+    }
+
     print() {
         if (list.isEmpty()) return console.log("List is empty")
         let node = this.head
@@ -139,3 +157,5 @@ list.print()
 list.insert(50, 0)
 list.print()
 console.log(list.searchValue(30))
+list.print()
+console.log(list.printReverse())
