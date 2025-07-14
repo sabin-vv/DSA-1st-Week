@@ -99,6 +99,22 @@ class List {
             return undefined
         }
     }
+    searchValue(value) {
+        if (this.isEmpty()) {
+            return -1
+        } else {
+            let ref = this.head
+            let i = 0
+            while (ref) {
+                if (ref.value === value) {
+                    return i
+                }
+                ref = ref.next
+                i++
+            }
+            return -1
+        }
+    }
     print() {
         if (list.isEmpty()) return console.log("List is empty")
         let node = this.head
@@ -122,7 +138,4 @@ list.append(40)
 list.print()
 list.insert(50, 0)
 list.print()
-list.removeIndex(0)
-list.print()
-list.removeIndex(2)
-list.print()
+console.log(list.searchValue(30))
