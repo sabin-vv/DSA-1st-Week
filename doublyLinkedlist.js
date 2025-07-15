@@ -30,9 +30,39 @@ class List {
         }
         this.size++
     }
+    append(value) {
+        let node = new Node(value)
+        if (this.size === 0) {
+            this.head = node
+            this.tail = node
+        } else {
+            this.tail.next = node
+            node.prev = this.tail
+            this.tail = node
+        }
+        this.size++
+    }
+    print() {
+        if (this.size === 0)
+            return -1
+        else {
+            let curr = this.head
+            let result = ''
+            while (curr) {
+                result += `${curr.value} `
+                curr = curr.next
+            }
+         console.log(result)
+        }
+    }
 }
 
 
 const list = new List()
 console.log(list.isEmpty())
 list.prepend(10)
+list.prepend(5)
+list.print()
+list.append(20)
+list.append(30)
+list.print()
