@@ -27,7 +27,7 @@ class List {
     }
     append(value) {
         const node = new Node(value)
-        if (list.isEmpty()) {
+        if (this.isEmpty()) {
             this.head = node
         } else {
             let prev = this.head
@@ -40,11 +40,11 @@ class List {
     }
     insert(value, index) {
         let node = new Node(value)
-        if (index < 0 || index > list.size) {
+        if (index < 0 || index > this.size) {
             console.log("index out of bound")
             return
         } else if (index === 0) {
-            list.prepend(value)
+            this.prepend(value)
         } else {
             let prev = this.head
             for (let i = 0; i < index - 1; i++) {
@@ -134,7 +134,7 @@ class List {
     }
 
     print() {
-        if (list.isEmpty()) return console.log("List is empty")
+        if (this.isEmpty()) return console.log("List is empty")
         let node = this.head
         let listValue = ''
         while (node) {

@@ -42,6 +42,34 @@ class List {
         }
         this.size++
     }
+    insert(value, index) {
+        if (index < 0 || index > this.size) {
+            console.log("Index out of bound")
+            return
+        }
+        let node = new Node(value)
+
+        if (index === 0) {
+            this.head.prev = node
+            node.next = this.head
+            this.head = node
+        } else if (index === this.size) {
+            this.tail.next = node
+            node.prev = this.tail
+            this.tail = node
+        } else {
+            let prev = this.head
+            let i = 0
+            for (i = 0; i < index - 1; i++) {
+                prev = prev.next
+            }
+            node.next = prev.next
+            prev.next.prev = node
+            prev.next = node
+            node.prev = prev
+        }
+        this.size++
+    }
     print() {
         if (this.size === 0)
             return -1
@@ -52,7 +80,7 @@ class List {
                 result += `${curr.value} `
                 curr = curr.next
             }
-         console.log(result)
+            console.log(result)
         }
     }
 }
